@@ -58,22 +58,23 @@ const InitialScene = () => {
 
   const anchorFound = () => {
     console.log('Anchor Image detected');
-    setShowDescription(true)
+    setShowDescription(true);
     setShowPlane(true);
-  }
+  };
 
   const showObject = () => {
     if (showPlane) {
       return (
-        <ViroARPlaneSelector onClick={(position, source) => {
-          setBackbutton(true)
-        }}>
+        <ViroARPlaneSelector
+          onClick={(position, source) => {
+            setBackbutton(true);
+          }}>
           <Viro3DObject
             source={require('../assets/windmill/windmill.obj')}
             position={[0, 0, -5]}
             scale={[0.019, 0.019, 0.019]}
             type="OBJ"
-           // rotation={[0, 0, 10]}
+            // rotation={[0, 0, 10]}
             dragType="FixedDistance"
             onDrag={() => {}}
             animation={{name: 'rotate', loop: true, run: true}}
@@ -89,7 +90,7 @@ const InitialScene = () => {
           onClick={(position, source) => {
             setShowDescription(false);
             setShowPlane(false);
-            setBackbutton(false)
+            setBackbutton(false);
             console.log('Click', position, source);
           }}>
           <ViroImage
@@ -121,7 +122,7 @@ const InitialScene = () => {
             width={4}
             onDrag={() => {}}>
             <ViroText
-              text="Die ist eine mögliche beschreibung eines POI"
+              text="Die Windmühle De Meenkmolen stammt aus dem Jahre 1851. Ihren Namen erbte sie vom nahegelegenen Bauernhof Meenk..."
               style={styles.prodDescriptionText}
             />
             <ViroText
@@ -150,7 +151,9 @@ const InitialScene = () => {
             width={4}
             onDrag={() => {}}>
             <ViroText
-              text="Die ist eine mögliche beschreibung eines POI"
+              text="Die Windmühle De Meenkmolen stammt aus dem Jahre 1851. Ihren Namen erbte sie vom nahegelegenen Bauernhof Meenk.
+              Etwa 30 Jahre nach ihrer Errichtung, erweiterte man sie um ein Sägewerk und eine Dampfmaschine. Diese Erweiterungen wichen über die Jahre fortschrittlicheren Technologien. Die Mühle blieb aber erhalten und wurde im späten 20. Jahrhundert zwei Mal restauriert.
+              Seit 1990 ist die Mühle wieder ab und an in Betrieb und mahlt ausschließlich mit Windkraft."
               style={styles.prodDescriptionText}
             />
           </ViroFlexView>
@@ -194,7 +197,7 @@ const InitialScene = () => {
   return (
     <ViroARScene>
       <ViroAmbientLight color="#ffffff" />
-      <ViroARImageMarker target="wappen" onAnchorFound={anchorFound}/>
+      <ViroARImageMarker target="wappen" onAnchorFound={anchorFound} />
       {infoIcon()}
       {description()}
       {showObject()}
@@ -239,7 +242,7 @@ var styles = StyleSheet.create({
   },
   prodDescriptionText: {
     fontFamily: 'sans-serif-light',
-    fontSize: 20,
+    fontSize: 14,
     color: '#222222',
     textAlignVertical: 'center',
     textAlign: 'left',
