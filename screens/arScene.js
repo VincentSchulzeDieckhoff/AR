@@ -1,3 +1,7 @@
+//https://viro-community.readme.io/docs/overview
+//https://github.com/viromedia/viro/tree/master/code-samples/js/360PhotoTour/res
+
+
 import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View, Text} from 'react-native';
 import {
@@ -26,17 +30,10 @@ var infoIconImage = require('../assets/icon_info.png');
 var backImage = require('../assets/icon_back.png');
 
 const InitialScene = () => {
-  const [objName, setObjName] = useState('Scanne das Bild');
-  const [showImage, setShowImage] = useState(false);
   const [showPlane, setShowPlane] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [backButton, setBackbutton] = useState(false);
 
-  /*ViroMaterials.createMaterials({
-    wood: {
-      diffuseTexture: require('./assets/wood.jpg'),
-    },
-  });*/
 
   ViroAnimations.registerAnimations({
     rotate: {
@@ -47,7 +44,6 @@ const InitialScene = () => {
     },
   });
 
-  //register targer
   ViroARTrackingTargets.createTargets({
     wappen: {
       source: require('../assets/Wappen2.jpg'),
@@ -71,8 +67,8 @@ const InitialScene = () => {
           }}>
           <Viro3DObject
             source={require('../assets/windmill/windmill.obj')}
-            position={[0, 0, -5]}
-            scale={[0.019, 0.019, 0.019]}
+            position={[0, 0, -4]}
+            scale={[0.025, 0.025, 0.025]}
             type="OBJ"
             // rotation={[0, 0, 10]}
             dragType="FixedDistance"
@@ -116,7 +112,7 @@ const InitialScene = () => {
           }}>
           <ViroFlexView
             style={styles.titleContainer}
-            position={[0, 0, -7]}
+            position={[0, 0, -11]}
             rotation={[0, 0, 0]}
             height={2}
             width={4}
@@ -126,7 +122,7 @@ const InitialScene = () => {
               style={styles.prodDescriptionText}
             />
             <ViroText
-              text="Klicke eine graue Fläche, um das Objekt zu platzieren"
+              text="Klicke auf eine graue Fläche, um das Objekt zu platzieren"
               height={1}
               width={8}
               style={{color: 'red'}}
@@ -145,15 +141,14 @@ const InitialScene = () => {
           }}>
           <ViroFlexView
             style={styles.titleContainer}
-            position={[0, 0, -7]}
+            position={[0, 0, -11]}
             rotation={[0, 0, 0]}
             height={2}
             width={4}
             onDrag={() => {}}>
             <ViroText
               text="Die Windmühle De Meenkmolen stammt aus dem Jahre 1851. Ihren Namen erbte sie vom nahegelegenen Bauernhof Meenk.
-              Etwa 30 Jahre nach ihrer Errichtung, erweiterte man sie um ein Sägewerk und eine Dampfmaschine. Diese Erweiterungen wichen über die Jahre fortschrittlicheren Technologien. Die Mühle blieb aber erhalten und wurde im späten 20. Jahrhundert zwei Mal restauriert.
-              Seit 1990 ist die Mühle wieder ab und an in Betrieb und mahlt ausschließlich mit Windkraft."
+              Seit 1990 ist die Mühle ab und an in Betrieb und mahlt ausschließlich mit Windkraft."
               style={styles.prodDescriptionText}
             />
           </ViroFlexView>
@@ -184,15 +179,6 @@ const InitialScene = () => {
       );
     }
   };
-
-  /*<ViroBox
-          height={2}
-          lenght={2}
-          position={[0, 0, 0]}
-          scale={[0.2, 0.2, 0.2]}
-          // materials={['wood']}
-          // animation={{name: 'rotate', loop: true, run: true}}
-        />*/
 
   return (
     <ViroARScene>
